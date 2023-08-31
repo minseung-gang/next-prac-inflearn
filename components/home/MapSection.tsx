@@ -1,12 +1,12 @@
 import Map from './Map';
+import useMaps from '../../hooks/useMaps';
+import { NaverMap } from '../../types/map';
 
 const MapSection = () => {
-  return (
-    <Map
-      onLoad={() => {
-        console.log('load!');
-      }}
-    />
-  );
+  const initializeMaps = useMaps();
+  const onLoadMap = (map: NaverMap) => {
+    initializeMaps(map);
+  };
+  return <Map onLoad={onLoadMap} />;
 };
 export default MapSection;
