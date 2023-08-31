@@ -6,6 +6,7 @@ import MapSection from '../components/home/MapSection';
 import { Store } from '../types/store';
 import { NextPage } from 'next';
 import useStores from '../hooks/useStores';
+import Markers from '../components/home/Markers';
 
 interface HomeProps {
   stores: Store[];
@@ -13,15 +14,17 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = ({ stores }) => {
   const initializeStores = useStores();
-  console.log('store', stores);
+
   useEffect(() => {
     initializeStores(stores);
   }, [initializeStores, stores]);
+
   return (
     <Fragment>
       <Header rightElements={<HeaderButton />} />
       <main style={{ width: '100%', height: '100%' }}>
         <MapSection />
+        <Markers />
       </main>
     </Fragment>
   );
