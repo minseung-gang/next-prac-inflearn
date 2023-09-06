@@ -8,12 +8,10 @@ const Marker = ({ map, coordinates, icon, onClick }: Marker): null => {
       map,
       icon,
     });
-
     if (onClick) {
-      naver.maps.Event.addListener(map, 'click', function (e) {
-        marker.setPosition(e.latlng);
-      });
+      naver.maps.Event.addListener(marker, 'click', onClick);
     }
+
     return () => {
       marker?.setMap(null);
     };
