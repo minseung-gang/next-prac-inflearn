@@ -1,12 +1,11 @@
-import HeaderButton from '../components/common/HeaderButton';
+import HeaderButton from '../components/home/Header';
 import { useEffect } from 'react';
 import { Fragment } from 'react';
-import Header from '../components/common/HeaderComponent';
+import Header from '../components/home/Header';
 import MapSection from '../components/home/MapSection';
 import { Store } from '../types/store';
 import { NextPage } from 'next';
 import useStores from '../hooks/useStores';
-import Markers from '../components/home/Markers';
 
 interface HomeProps {
   stores: Store[];
@@ -18,13 +17,11 @@ const Home: NextPage<HomeProps> = ({ stores }) => {
   useEffect(() => {
     initializeStores(stores);
   }, [initializeStores, stores]);
-
   return (
     <Fragment>
-      <Header rightElements={<HeaderButton />} />
+      <Header />
       <main style={{ width: '100%', height: '100%' }}>
         <MapSection />
-        <Markers />
       </main>
     </Fragment>
   );
