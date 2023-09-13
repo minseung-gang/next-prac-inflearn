@@ -3,6 +3,7 @@ import { Coordinates } from '@/types/store';
 import { INITIAL_CENTER, INITIAL_ZOOM } from '@/hooks/useMaps';
 import Script from 'next/script';
 import { NaverMap } from '../../types/map';
+import styles from '../../styles/map.module.scss';
 
 interface props {
   initialCenter?: Coordinates;
@@ -28,15 +29,15 @@ export default function Map({
       },
     };
     const map = new window.naver.maps.Map('map', mapOptions);
-
-    mapRef.current = map;
+    console.log(map, '맵 객체');
+    /*   mapRef.current = map; */
     if (onLoad) {
       onLoad(map);
     }
   };
   useEffect(() => {
     return () => {
-      mapRef.current?.destroy();
+      /*  mapRef.current?.destroy(); */
     };
   }, []);
   return (
@@ -47,7 +48,7 @@ export default function Map({
         src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NCP_CLIENT_ID}&callback=initMap`}
         onReady={initializeMap}
       />
-      <div id="map" style={{ width: '100%', height: '100%' }} />
+      <div id="map" className={styles.map} />
     </>
   );
 }
