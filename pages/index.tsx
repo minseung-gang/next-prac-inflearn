@@ -1,4 +1,3 @@
-import HeaderButton from '../components/home/Header';
 import { useEffect } from 'react';
 import { Fragment } from 'react';
 import Header from '../components/home/Header';
@@ -21,7 +20,14 @@ const Home: NextPage<HomeProps> = ({ stores }) => {
   return (
     <Fragment>
       <Header />
-      <main style={{ width: '100%', height: '100%' }}>
+      <main
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: '100%',
+          overflow: 'hidden',
+        }}
+      >
         <MapSection />
         <DetailSection />
       </main>
