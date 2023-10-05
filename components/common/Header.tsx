@@ -18,6 +18,7 @@ const HeaderComponent = ({ onClickLogo, rightElements }: Props) => {
             width={110}
             height={20}
             alt="인프런 로고"
+            aria-label="홈으로 이동"
           />
         </Link>
       </div>
