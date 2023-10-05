@@ -9,9 +9,8 @@ import { useMemo } from 'react';
 
 const MapSection = () => {
   const router = useRouter();
-
   const query = useMemo(() => new URLSearchParams(router.asPath.slice(1)), []);
-
+  console.log(query, 'query');
   const initialCenter = useMemo<Coordinates>(
     () =>
       query.get('lat') && query.get('lng')
