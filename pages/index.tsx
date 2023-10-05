@@ -6,6 +6,7 @@ import { Store } from '../types/store';
 import { NextPage } from 'next';
 import useStores from '../hooks/useStores';
 import DetailSection from '@/components/home/DetailSection';
+import { NextSeo } from 'next-seo';
 
 interface HomeProps {
   stores: Store[];
@@ -19,6 +20,10 @@ const Home: NextPage<HomeProps> = ({ stores }) => {
   }, [initializeStores, stores]);
   return (
     <Fragment>
+      <NextSeo
+        title="매장 지도"
+        description="Next.js 시작하기 강의를 위한 매장 지도 서비스입니다."
+      />
       <Header />
       <main
         style={{
