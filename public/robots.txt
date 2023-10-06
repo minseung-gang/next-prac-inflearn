@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://next-prac-inflearn.vercel.app/
+
+# Sitemaps
+Sitemap: https://next-prac-inflearn.vercel.app/sitemap.xml
