@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'GTM-5DB25ZFM');
+              gtag('config', 'G-PGGY2X86EE');
             `,
           }}
         />
@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
       {/* Global Site Tag (gtag.js) - Google Analytics */}
       <Script
         strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=GTM-5DB25ZFM`}
+        src={`https://www.googletagmanager.com/gtag/js?id=G-PGGY2X86EE`}
       />
       <DefaultSeo {...SEO} />
       <Component {...pageProps} />
