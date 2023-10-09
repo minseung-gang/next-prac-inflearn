@@ -1,23 +1,23 @@
-import { useEffect } from 'react';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
+import { NextPage } from 'next';
 import Header from '../components/home/Header';
 import MapSection from '../components/home/MapSection';
+import DetailSection from '../components/home/DetailSection';
 import { Store } from '../types/store';
-import { NextPage } from 'next';
 import useStores from '../hooks/useStores';
-import DetailSection from '@/components/home/DetailSection';
 import { NextSeo } from 'next-seo';
-
-interface HomeProps {
+import axios from 'axios';
+interface Props {
   stores: Store[];
 }
 
-const Home: NextPage<HomeProps> = ({ stores }) => {
+const Home: NextPage<Props> = ({ stores }) => {
   const initializeStores = useStores();
 
   useEffect(() => {
     initializeStores(stores);
   }, [initializeStores, stores]);
+
   return (
     <Fragment>
       <NextSeo
@@ -40,14 +40,23 @@ const Home: NextPage<HomeProps> = ({ stores }) => {
     </Fragment>
   );
 };
-
 export default Home;
 
 export async function getStaticProps() {
-  const stores = (await import('../public/store.json')).default;
+  try {
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/stores`
+    );
+    const stores = response.data;
 
-  return {
-    props: { stores },
-    revalidate: 60 * 60,
-  };
+    return {
+      props: { stores },
+      revalidate: 60 * 60,
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      props: { stores: [] }, // 에러 발생 시 빈 배열 반환 또는 다른 오류 처리 방식 선택
+    };
+  }
 }
