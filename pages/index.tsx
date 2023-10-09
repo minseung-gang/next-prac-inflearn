@@ -13,7 +13,7 @@ interface Props {
 
 const Home: NextPage<Props> = ({ stores }) => {
   const initializeStores = useStores();
-
+  console.log(stores);
   useEffect(() => {
     initializeStores(stores);
   }, [initializeStores, stores]);
